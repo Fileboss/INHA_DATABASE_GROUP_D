@@ -1,0 +1,1302 @@
+{
+	"tables": {
+		"d4cc4e87-0915-4651-8320-9318a2882536": {
+			"id": "d4cc4e87-0915-4651-8320-9318a2882536",
+			"visible": true,
+			"name": "Admin",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "513141b5-c5a9-48d4-a4f7-97abd5b5a2c3",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "31b95444-fac7-4f6b-bf67-37a45d7cedf7",
+					"name": "username",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				}
+			],
+			"relations": [
+				"12127df7-85b8-4a5f-bf36-884919a381f5",
+				"9d961954-9d64-4b63-9fa6-5b2124359a29"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "6e472cb5-cc54-47c4-96b4-19c35977b2ee",
+					"name": "Admin_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "e1e183fd-90f5-4abc-b5a2-3a43d9db4231",
+							"colid": "513141b5-c5a9-48d4-a4f7-97abd5b5a2c3"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		},
+		"5b090cb2-3fbc-40c4-868a-94f33f0a7dff": {
+			"id": "5b090cb2-3fbc-40c4-868a-94f33f0a7dff",
+			"visible": true,
+			"name": "Doctor",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "275d451e-eafb-4e87-917e-5297041dcd5d",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "11a99d3e-0c9a-4ae9-bd74-7337fb645f7b",
+					"name": "name",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "fb197d62-4d36-4ca2-b8e7-297a07dec533",
+					"name": "specialization",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "80a1c273-9137-4b7e-95a0-10833a91d3da",
+					"name": "Admin_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Admin"
+				}
+			],
+			"relations": [
+				"12127df7-85b8-4a5f-bf36-884919a381f5",
+				"9526f58f-d518-4463-ba25-f8f1a6961a14"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "5752e3f5-0914-448d-9474-3e95ddfdc3ac",
+					"name": "Doctor_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "c48ff102-1142-4500-8aef-508575066d78",
+							"colid": "275d451e-eafb-4e87-917e-5297041dcd5d"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		},
+		"a58028ca-f5c3-413e-b6f1-aa9384891a62": {
+			"id": "a58028ca-f5c3-413e-b6f1-aa9384891a62",
+			"visible": true,
+			"name": "Staff",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "5a739809-b9dd-43e8-982c-2b3709b4b82d",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "2a2a2fdc-fb8f-478c-9cf7-ab5931deab82",
+					"name": "name",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "4404519c-9eec-4871-909d-801f9db2fbcc",
+					"name": "designation",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "4c59a432-6411-47eb-b1cb-c1a960403ad0",
+					"name": "Admin_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Admin"
+				}
+			],
+			"relations": [
+				"9d961954-9d64-4b63-9fa6-5b2124359a29",
+				"005cdb9c-08a7-4d85-9e53-5fe8227487a1"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "54cb5398-c1d1-411d-9792-e999fd8d18e2",
+					"name": "Staff_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "19216a93-d48d-4d53-abd4-0a2fe33519f6",
+							"colid": "5a739809-b9dd-43e8-982c-2b3709b4b82d"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		},
+		"b5a58ecb-9e17-4a45-adb5-886fc8a3b512": {
+			"id": "b5a58ecb-9e17-4a45-adb5-886fc8a3b512",
+			"visible": true,
+			"name": "Room",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "9d8b0f07-0e5a-4543-8a13-30af82b62896",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "a46fe87b-af53-479e-b1cb-9c64ed59af4b",
+					"name": "number",
+					"datatype": "integer",
+					"param": "",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "95863463-112e-4b7b-a630-f465c211d08f",
+					"name": "Patient_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Patient"
+				}
+			],
+			"relations": [
+				"a9b7722b-1a16-4658-a549-14aef8580ee5"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "c9bef506-f220-4af9-a679-e1cb6708e72a",
+					"name": "Room_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "98d597f1-1ad0-49f5-b260-1bbafc2958f6",
+							"colid": "9d8b0f07-0e5a-4543-8a13-30af82b62896"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		},
+		"cb58deb0-57c3-485c-be88-9f3b04bfb9f5": {
+			"id": "cb58deb0-57c3-485c-be88-9f3b04bfb9f5",
+			"visible": true,
+			"name": "Patient",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "c9f53cb5-bf4d-4e71-a19f-d32985605f25",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "11b81e31-a54d-478d-b8f9-9f048c26fa1d",
+					"name": "name",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "9839b3dd-5a29-41e1-8725-7fb1677984d2",
+					"name": "gender",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "8e6c9415-d2c1-413d-a0ff-f9c95ff41aee",
+					"name": "admissiondate",
+					"datatype": "date",
+					"param": "",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "17a078cc-8b00-41be-a126-117473ed6156",
+					"name": "Doctor_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Doctor"
+				}
+			],
+			"relations": [
+				"9526f58f-d518-4463-ba25-f8f1a6961a14",
+				"a9b7722b-1a16-4658-a549-14aef8580ee5",
+				"2406137d-8453-4eeb-a636-ffa143a0a7fe",
+				"59d60827-3ea7-42a8-a1a6-4edc027ed312",
+				"31b3d435-c037-4f07-89e6-8b143d3de5ff"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "ae61dedc-7aeb-47fa-8f3c-c88e4e809d6d",
+					"name": "Patient_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "65eee5c8-a2f6-4bda-89a1-87e18b462e7b",
+							"colid": "c9f53cb5-bf4d-4e71-a19f-d32985605f25"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		},
+		"a097e046-b8dc-4f37-b75d-31c7959e6ca9": {
+			"id": "a097e046-b8dc-4f37-b75d-31c7959e6ca9",
+			"visible": true,
+			"name": "Patient_Medical",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "306c6913-f7f2-4175-8714-12a5514f5efc",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "434731f2-714c-422a-b583-4f46ffa439ee",
+					"name": "medecine_name",
+					"datatype": "integer",
+					"param": "",
+					"pk": false,
+					"nn": false,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "1c44549b-dc6f-4e26-8386-e22afc84289a",
+					"name": "Patient_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Patient"
+				}
+			],
+			"relations": [
+				"2406137d-8453-4eeb-a636-ffa143a0a7fe"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "5b7c7a90-359d-46f4-afb0-c6cafac559ac",
+					"name": "Patient_Medical_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "f3315446-2c96-4288-9451-fc94e00f34a9",
+							"colid": "306c6913-f7f2-4175-8714-12a5514f5efc"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		},
+		"b73d46c6-7f78-458d-a4b7-c77482ff7d44": {
+			"id": "b73d46c6-7f78-458d-a4b7-c77482ff7d44",
+			"visible": true,
+			"name": "Patient_bill",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "4a45c619-9fcf-4597-a0a8-d9ae64c5bfcc",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "dd14bf8c-4a72-402e-a798-5b0d32a92052",
+					"name": "total_amount",
+					"datatype": "integer",
+					"param": "",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "18854a9c-9e0f-4d04-9260-99dadbb0aec8",
+					"name": "Patient_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Patient"
+				},
+				{
+					"id": "f1dd3cf0-5367-4261-b48f-3e2415f54d26",
+					"name": "Cashier_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": false,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Cashier"
+				}
+			],
+			"relations": [
+				"31b3d435-c037-4f07-89e6-8b143d3de5ff",
+				"f2f5003d-7992-470a-b7e6-1dbf29b87e70"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "7c5e991c-1882-435b-b409-597af42db5c6",
+					"name": "Patient_bill_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "6f35d466-c978-428c-9b4c-8e33549b2570",
+							"colid": "4a45c619-9fcf-4597-a0a8-d9ae64c5bfcc"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		},
+		"c915098f-e980-4f75-bee9-e44a00392dde": {
+			"id": "c915098f-e980-4f75-bee9-e44a00392dde",
+			"visible": true,
+			"name": "Patient_service",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "bd723f31-9136-412a-99d1-9d622f86820c",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "8bf6d741-d7c1-4ec1-8792-f8bac2c0280f",
+					"name": "service_name",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "b0d3438a-488a-4762-89dd-025e63e35163",
+					"name": "Patient_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Patient"
+				}
+			],
+			"relations": [
+				"59d60827-3ea7-42a8-a1a6-4edc027ed312"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "9f158516-4396-4f82-8cda-dbd41a4303d9",
+					"name": "Patient_service_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "ac650e5c-5747-46d0-8f69-4df5125ff869",
+							"colid": "bd723f31-9136-412a-99d1-9d622f86820c"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		},
+		"98245bf0-431a-4587-a790-3a3da023a022": {
+			"id": "98245bf0-431a-4587-a790-3a3da023a022",
+			"visible": true,
+			"name": "Cashier",
+			"desc": "",
+			"estimatedSize": "",
+			"cols": [
+				{
+					"id": "7c00fc2e-5d0f-4799-a061-436798e7616b",
+					"name": "id",
+					"datatype": "serial",
+					"pk": true,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "2a3535cd-6d3b-41e9-9e48-ef606c5e0673",
+					"name": "first_name",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "c8d610c8-97db-4500-8502-f8909c17ba6d",
+					"name": "last_name",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "edb275d3-3be2-4d87-a1b8-8e6722b0e283",
+					"name": "designation",
+					"datatype": "varchar",
+					"param": "50",
+					"pk": false,
+					"nn": false,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"list": false,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					}
+				},
+				{
+					"id": "1eb82395-caef-4a1f-904f-b449adb5da40",
+					"name": "Staff_id",
+					"datatype": "integer",
+					"pk": false,
+					"nn": true,
+					"comment": "",
+					"defaultvalue": "",
+					"data": "",
+					"collation": null,
+					"after": "",
+					"pg": {
+						"generatedIdentity": "no"
+					},
+					"fk": true,
+					"ref": "Staff"
+				}
+			],
+			"relations": [
+				"005cdb9c-08a7-4d85-9e53-5fe8227487a1",
+				"f2f5003d-7992-470a-b7e6-1dbf29b87e70"
+			],
+			"lines": [],
+			"keys": [
+				{
+					"id": "2bd98325-8101-44c3-b723-73d186c9f70e",
+					"name": "Cashier_pkey",
+					"isPk": true,
+					"using": "",
+					"cols": [
+						{
+							"id": "382750c1-b6ba-4b37-b5a0-370e37c889ce",
+							"colid": "7c00fc2e-5d0f-4799-a061-436798e7616b"
+						}
+					]
+				}
+			],
+			"indexes": [],
+			"embeddable": false,
+			"generate": true,
+			"generateCustomCode": true,
+			"objectType": "table",
+			"pg": {
+				"rowsecurity": false,
+				"schema": ""
+			}
+		}
+	},
+	"relations": {
+		"12127df7-85b8-4a5f-bf36-884919a381f5": {
+			"id": "12127df7-85b8-4a5f-bf36-884919a381f5",
+			"visible": true,
+			"name": "Doctor_Admin_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "6e472cb5-cc54-47c4-96b4-19c35977b2ee",
+			"parent": "d4cc4e87-0915-4651-8320-9318a2882536",
+			"child": "5b090cb2-3fbc-40c4-868a-94f33f0a7dff",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "84ef7063-e59e-4aa1-ac10-f042d548223a",
+					"parentcol": "513141b5-c5a9-48d4-a4f7-97abd5b5a2c3",
+					"childcol": "80a1c273-9137-4b7e-95a0-10833a91d3da"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		},
+		"9d961954-9d64-4b63-9fa6-5b2124359a29": {
+			"id": "9d961954-9d64-4b63-9fa6-5b2124359a29",
+			"visible": true,
+			"name": "Staff_Admin_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "6e472cb5-cc54-47c4-96b4-19c35977b2ee",
+			"parent": "d4cc4e87-0915-4651-8320-9318a2882536",
+			"child": "a58028ca-f5c3-413e-b6f1-aa9384891a62",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "8eb68d00-7697-4064-9c4f-234e441e182d",
+					"parentcol": "513141b5-c5a9-48d4-a4f7-97abd5b5a2c3",
+					"childcol": "4c59a432-6411-47eb-b1cb-c1a960403ad0"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		},
+		"9526f58f-d518-4463-ba25-f8f1a6961a14": {
+			"id": "9526f58f-d518-4463-ba25-f8f1a6961a14",
+			"visible": true,
+			"name": "Patient_Doctor_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "5752e3f5-0914-448d-9474-3e95ddfdc3ac",
+			"parent": "5b090cb2-3fbc-40c4-868a-94f33f0a7dff",
+			"child": "cb58deb0-57c3-485c-be88-9f3b04bfb9f5",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "1672d6f8-8f1c-4632-9334-0f22cb80eac4",
+					"parentcol": "275d451e-eafb-4e87-917e-5297041dcd5d",
+					"childcol": "17a078cc-8b00-41be-a126-117473ed6156"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		},
+		"a9b7722b-1a16-4658-a549-14aef8580ee5": {
+			"id": "a9b7722b-1a16-4658-a549-14aef8580ee5",
+			"visible": true,
+			"name": "Room_Patient_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "ae61dedc-7aeb-47fa-8f3c-c88e4e809d6d",
+			"parent": "cb58deb0-57c3-485c-be88-9f3b04bfb9f5",
+			"child": "b5a58ecb-9e17-4a45-adb5-886fc8a3b512",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "5d86b888-b74e-4912-aa92-4e8b57812a0b",
+					"parentcol": "c9f53cb5-bf4d-4e71-a19f-d32985605f25",
+					"childcol": "95863463-112e-4b7b-a630-f465c211d08f"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		},
+		"2406137d-8453-4eeb-a636-ffa143a0a7fe": {
+			"id": "2406137d-8453-4eeb-a636-ffa143a0a7fe",
+			"visible": true,
+			"name": "Patient_Medical_Patient_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "ae61dedc-7aeb-47fa-8f3c-c88e4e809d6d",
+			"parent": "cb58deb0-57c3-485c-be88-9f3b04bfb9f5",
+			"child": "a097e046-b8dc-4f37-b75d-31c7959e6ca9",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "f58f84bc-00be-427d-9814-4c0d45e092a7",
+					"parentcol": "c9f53cb5-bf4d-4e71-a19f-d32985605f25",
+					"childcol": "1c44549b-dc6f-4e26-8386-e22afc84289a"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		},
+		"59d60827-3ea7-42a8-a1a6-4edc027ed312": {
+			"id": "59d60827-3ea7-42a8-a1a6-4edc027ed312",
+			"visible": true,
+			"name": "Patient_service_Patient_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "ae61dedc-7aeb-47fa-8f3c-c88e4e809d6d",
+			"parent": "cb58deb0-57c3-485c-be88-9f3b04bfb9f5",
+			"child": "c915098f-e980-4f75-bee9-e44a00392dde",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "4d1485bf-a60c-4daf-890d-d1c9eadb6ba8",
+					"parentcol": "c9f53cb5-bf4d-4e71-a19f-d32985605f25",
+					"childcol": "b0d3438a-488a-4762-89dd-025e63e35163"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		},
+		"31b3d435-c037-4f07-89e6-8b143d3de5ff": {
+			"id": "31b3d435-c037-4f07-89e6-8b143d3de5ff",
+			"visible": true,
+			"name": "Patient_bill_Patient_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "ae61dedc-7aeb-47fa-8f3c-c88e4e809d6d",
+			"parent": "cb58deb0-57c3-485c-be88-9f3b04bfb9f5",
+			"child": "b73d46c6-7f78-458d-a4b7-c77482ff7d44",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "b1382086-dee5-4466-91c0-b9db7d0c9555",
+					"parentcol": "c9f53cb5-bf4d-4e71-a19f-d32985605f25",
+					"childcol": "18854a9c-9e0f-4d04-9260-99dadbb0aec8"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		},
+		"005cdb9c-08a7-4d85-9e53-5fe8227487a1": {
+			"id": "005cdb9c-08a7-4d85-9e53-5fe8227487a1",
+			"visible": true,
+			"name": "Cashier_Staff_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "54cb5398-c1d1-411d-9792-e999fd8d18e2",
+			"parent": "a58028ca-f5c3-413e-b6f1-aa9384891a62",
+			"child": "98245bf0-431a-4587-a790-3a3da023a022",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "05531fdb-628f-43ce-8a78-459de18f63cd",
+					"parentcol": "5a739809-b9dd-43e8-982c-2b3709b4b82d",
+					"childcol": "1eb82395-caef-4a1f-904f-b449adb5da40"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		},
+		"f2f5003d-7992-470a-b7e6-1dbf29b87e70": {
+			"id": "f2f5003d-7992-470a-b7e6-1dbf29b87e70",
+			"visible": true,
+			"name": "Patient_bill_Cashier_id_fkey",
+			"desc": "",
+			"type": "identifying",
+			"parent_key": "2bd98325-8101-44c3-b723-73d186c9f70e",
+			"parent": "98245bf0-431a-4587-a790-3a3da023a022",
+			"child": "b73d46c6-7f78-458d-a4b7-c77482ff7d44",
+			"c_mp": "true",
+			"c_mch": "true",
+			"c_p": "one",
+			"c_ch": "many",
+			"c_cp": "",
+			"c_cch": "",
+			"cols": [
+				{
+					"id": "26fc79ee-d674-484f-92a6-7751cf8fc05f",
+					"parentcol": "7c00fc2e-5d0f-4799-a061-436798e7616b",
+					"childcol": "f1dd3cf0-5367-4261-b48f-3e2415f54d26"
+				}
+			],
+			"generate": true,
+			"generateCustomCode": true
+		}
+	},
+	"notes": {},
+	"lines": {},
+	"model": {
+		"name": "Hospital ERD",
+		"id": "c6c13e7c-e709-4a78-9a1f-c18558cc846f",
+		"activeDiagram": "15bf1857-8da0-4239-be0b-3b6a993932c0",
+		"desc": "",
+		"path": "",
+		"type": "PG",
+		"version": 1,
+		"parentTableInFkCols": true,
+		"caseConvention": "under",
+		"replaceSpace": "_",
+		"color": "transparent",
+		"sideSelections": true,
+		"isDirty": false,
+		"storedin": {
+			"major": 4,
+			"minor": 6,
+			"extra": 6
+		},
+		"embeddedInParentsIsDisplayed": true,
+		"schemaContainerIsDisplayed": false,
+		"cardinalityIsDisplayed": false,
+		"estimatedSizeIsDisplayed": false,
+		"writeFileParam": false,
+		"def_coltopk": true,
+		"pg": {
+			"schema": ""
+		},
+		"sqlSettings": {
+			"wrapLines": true,
+			"wrapOffset": 80,
+			"indent": true,
+			"indentationString": "spaces",
+			"indentationSize": 2,
+			"limitItemsOnLine": true,
+			"maxListItemsOnLine": 3,
+			"statementDelimiter": ";",
+			"routineDelimiter": ";",
+			"keywordCase": "upper",
+			"identiferCase": "original",
+			"includeSchema": "always",
+			"quotation": "if_needed",
+			"includeGeneratedNames": "always"
+		},
+		"nameAutoGeneration": {
+			"keys": true,
+			"indexes": true,
+			"relations": true
+		},
+		"lastSaved": "Thu Nov 10 2022 06:50:34 GMT+0900 (heure normale de la Corée)"
+	},
+	"otherObjects": {},
+	"diagrams": {
+		"15bf1857-8da0-4239-be0b-3b6a993932c0": {
+			"name": "Main Diagram",
+			"description": "",
+			"id": "15bf1857-8da0-4239-be0b-3b6a993932c0",
+			"keysgraphics": true,
+			"linegraphics": "detailed",
+			"zoom": 1,
+			"background": "transparent",
+			"lineColor": "transparent",
+			"isOpen": true,
+			"main": true,
+			"diagramItems": {
+				"d4cc4e87-0915-4651-8320-9318a2882536": {
+					"referencedItemId": "d4cc4e87-0915-4651-8320-9318a2882536",
+					"x": 52,
+					"y": 180,
+					"gHeight": 62,
+					"gWidth": 218,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				},
+				"5b090cb2-3fbc-40c4-868a-94f33f0a7dff": {
+					"referencedItemId": "5b090cb2-3fbc-40c4-868a-94f33f0a7dff",
+					"x": 45,
+					"y": 365,
+					"gHeight": 98,
+					"gWidth": 238,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				},
+				"a58028ca-f5c3-413e-b6f1-aa9384891a62": {
+					"referencedItemId": "a58028ca-f5c3-413e-b6f1-aa9384891a62",
+					"x": 337,
+					"y": 88,
+					"gHeight": 98,
+					"gWidth": 227,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				},
+				"b5a58ecb-9e17-4a45-adb5-886fc8a3b512": {
+					"referencedItemId": "b5a58ecb-9e17-4a45-adb5-886fc8a3b512",
+					"x": 115,
+					"y": 577,
+					"gHeight": 81,
+					"gWidth": 196,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				},
+				"cb58deb0-57c3-485c-be88-9f3b04bfb9f5": {
+					"referencedItemId": "cb58deb0-57c3-485c-be88-9f3b04bfb9f5",
+					"x": 443,
+					"y": 339,
+					"gHeight": 117,
+					"gWidth": 210,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				},
+				"a097e046-b8dc-4f37-b75d-31c7959e6ca9": {
+					"referencedItemId": "a097e046-b8dc-4f37-b75d-31c7959e6ca9",
+					"x": 440,
+					"y": 665,
+					"gHeight": 81,
+					"gWidth": 233,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				},
+				"b73d46c6-7f78-458d-a4b7-c77482ff7d44": {
+					"referencedItemId": "b73d46c6-7f78-458d-a4b7-c77482ff7d44",
+					"x": 833,
+					"y": 403,
+					"gHeight": 98,
+					"gWidth": 215,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				},
+				"c915098f-e980-4f75-bee9-e44a00392dde": {
+					"referencedItemId": "c915098f-e980-4f75-bee9-e44a00392dde",
+					"x": 777,
+					"y": 567,
+					"gHeight": 81,
+					"gWidth": 238,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				},
+				"98245bf0-431a-4587-a790-3a3da023a022": {
+					"referencedItemId": "98245bf0-431a-4587-a790-3a3da023a022",
+					"x": 706,
+					"y": 96,
+					"gHeight": 117,
+					"gWidth": 227,
+					"color": "#ffffff",
+					"background": "#03a9f4",
+					"resized": false,
+					"autoExpand": true
+				}
+			},
+			"scroll": {
+				"x": 0,
+				"y": 0
+			},
+			"type": "erd"
+		}
+	},
+	"order": [
+		"d4cc4e87-0915-4651-8320-9318a2882536",
+		"5b090cb2-3fbc-40c4-868a-94f33f0a7dff",
+		"a58028ca-f5c3-413e-b6f1-aa9384891a62",
+		"b5a58ecb-9e17-4a45-adb5-886fc8a3b512",
+		"cb58deb0-57c3-485c-be88-9f3b04bfb9f5",
+		"a097e046-b8dc-4f37-b75d-31c7959e6ca9",
+		"b73d46c6-7f78-458d-a4b7-c77482ff7d44",
+		"c915098f-e980-4f75-bee9-e44a00392dde",
+		"98245bf0-431a-4587-a790-3a3da023a022",
+		"12127df7-85b8-4a5f-bf36-884919a381f5",
+		"9d961954-9d64-4b63-9fa6-5b2124359a29",
+		"9526f58f-d518-4463-ba25-f8f1a6961a14",
+		"a9b7722b-1a16-4658-a549-14aef8580ee5",
+		"2406137d-8453-4eeb-a636-ffa143a0a7fe",
+		"59d60827-3ea7-42a8-a1a6-4edc027ed312",
+		"31b3d435-c037-4f07-89e6-8b143d3de5ff",
+		"005cdb9c-08a7-4d85-9e53-5fe8227487a1",
+		"f2f5003d-7992-470a-b7e6-1dbf29b87e70"
+	],
+	"collapsedTreeItems": []
+}
