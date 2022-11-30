@@ -327,9 +327,9 @@ CREATE TRIGGER IF NOT EXISTS Trg_Update_Prescription
         SET NEW.ChangedBy = USER();
     END;
 
-CREATE TRIGGER IF NOT EXISTS Trg_Insert_Appointment
+CREATE TRIGGER IF NOT EXISTS Trg_Insert_Doctor_Appointment
     BEFORE INSERT 
-    ON Appointment
+    ON Doctor_Appointment
     FOR EACH ROW
     BEGIN
         SET NEW.CreatedOn = CURRENT_TIMESTAMP;
@@ -338,9 +338,29 @@ CREATE TRIGGER IF NOT EXISTS Trg_Insert_Appointment
         SET NEW.ChangedBy = USER();
     END;
 
-CREATE TRIGGER IF NOT EXISTS Trg_Update_Appointment
+CREATE TRIGGER IF NOT EXISTS Trg_Update_Doctor_Appointment
     BEFORE UPDATE 
-    ON Appointment
+    ON Doctor_Appointment
+    FOR EACH ROW
+    BEGIN
+        SET NEW.ChangedOn = CURRENT_TIMESTAMP;
+        SET NEW.ChangedBy = USER();
+    END;
+
+CREATE TRIGGER IF NOT EXISTS Trg_Insert_Nurse_Appointment
+    BEFORE INSERT 
+    ON Nurse_Appointment
+    FOR EACH ROW
+    BEGIN
+        SET NEW.CreatedOn = CURRENT_TIMESTAMP;
+        SET NEW.CreatedBy = USER();
+        SET NEW.ChangedOn = CURRENT_TIMESTAMP;
+        SET NEW.ChangedBy = USER();
+    END;
+
+CREATE TRIGGER IF NOT EXISTS Trg_Update_Nurse_Appointment
+    BEFORE UPDATE 
+    ON Nurse_Appointment
     FOR EACH ROW
     BEGIN
         SET NEW.ChangedOn = CURRENT_TIMESTAMP;
