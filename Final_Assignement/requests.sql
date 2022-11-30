@@ -16,8 +16,8 @@ CREATE TABLE Nurse(
    ChangedOn DATETIME NOT NULL,
    ChangedBy INT,
    PRIMARY KEY(Nurse_ID)
+   CONSTRAINT CHECK_Qualification_Level CHECK (Qualification_level > 0 AND Qualification_level < 5)
 );
--- Constraint qualitification level between 1 and 4
 
 CREATE TABLE Specialization(
    Specialization_Identification_Number CHAR(4),
@@ -98,9 +98,8 @@ CREATE TABLE Patient(
    PRIMARY KEY(Patient_ID),
    FOREIGN KEY(Main_Language_Code) REFERENCES Language_(Code),
    FOREIGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID)
+   CONSTRAINT CHECK_Gender CHECK (Gender = 'M' OR Gender = 'F')
 );
--- Gender constraint (M or F)
-
 
 CREATE TABLE Prescription(
    Prescription_ID INTEGER AUTOINCREMENT,
