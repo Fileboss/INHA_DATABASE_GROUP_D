@@ -16,8 +16,8 @@ CREATE TABLE Nurse(
    ChangedOn DATETIME NOT NULL,
    ChangedBy INT,
    PRIMARY KEY(Nurse_ID)
+   CONSTRAINT CHECK_Qualification_Level CHECK (Qualification_level > 0 AND Qualification_level < 5)
 );
--- Constraint qualitification level between 1 and 4
 
 CREATE TABLE Specialization(
    Specialization_Identification_Number CHAR(4),
@@ -98,9 +98,8 @@ CREATE TABLE Patient(
    PRIMARY KEY(Patient_ID),
    FOREIGN KEY(Main_Language_Code) REFERENCES Language_(Code),
    FOREIGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID)
+   CONSTRAINT CHECK_Gender CHECK (Gender = 'M' OR Gender = 'F')
 );
--- Gender constraint (M or F)
-
 
 CREATE TABLE Prescription(
    Prescription_ID INTEGER AUTOINCREMENT,
@@ -328,9 +327,9 @@ CREATE TRIGGER IF NOT EXISTS Trg_Update_Prescription
         SET NEW.ChangedBy = USER();
     END;
 
-CREATE TRIGGER IF NOT EXISTS Trg_Insert_Appointment
+CREATE TRIGGER IF NOT EXISTS Trg_Insert_Doctor_Appointment
     BEFORE INSERT 
-    ON Appointment
+    ON Doctor_Appointment
     FOR EACH ROW
     BEGIN
         SET NEW.CreatedOn = CURRENT_TIMESTAMP;
@@ -339,9 +338,29 @@ CREATE TRIGGER IF NOT EXISTS Trg_Insert_Appointment
         SET NEW.ChangedBy = USER();
     END;
 
-CREATE TRIGGER IF NOT EXISTS Trg_Update_Appointment
+CREATE TRIGGER IF NOT EXISTS Trg_Update_Doctor_Appointment
     BEFORE UPDATE 
-    ON Appointment
+    ON Doctor_Appointment
+    FOR EACH ROW
+    BEGIN
+        SET NEW.ChangedOn = CURRENT_TIMESTAMP;
+        SET NEW.ChangedBy = USER();
+    END;
+
+CREATE TRIGGER IF NOT EXISTS Trg_Insert_Nurse_Appointment
+    BEFORE INSERT 
+    ON Nurse_Appointment
+    FOR EACH ROW
+    BEGIN
+        SET NEW.CreatedOn = CURRENT_TIMESTAMP;
+        SET NEW.CreatedBy = USER();
+        SET NEW.ChangedOn = CURRENT_TIMESTAMP;
+        SET NEW.ChangedBy = USER();
+    END;
+
+CREATE TRIGGER IF NOT EXISTS Trg_Update_Nurse_Appointment
+    BEFORE UPDATE 
+    ON Nurse_Appointment
     FOR EACH ROW
     BEGIN
         SET NEW.ChangedOn = CURRENT_TIMESTAMP;
