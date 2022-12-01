@@ -82,7 +82,6 @@ CREATE TABLE Patient(
    First_Name VARCHAR(20) NOT NULL,
    Last_Name VARCHAR(30) NOT NULL,
    Nationality VARCHAR(30),
-   Problem_Description TEXT,
    Gender CHAR(1) NOT NULL,
    Address_Street_Number BYTE NOT NULL,
    Address_Street_Name VARCHAR(50) NOT NULL,
@@ -135,6 +134,7 @@ CREATE TABLE Doctor_Appointment(
    Start_Date_Time DATETIME NOT NULL,
    End_Date_Time DATETIME NOT NULL,
    Fee DOUBLE, -- Nullable because it must be filled after the appointment
+   Diagnosis,
    CreatedOn DATETIME NOT NULL,
    CreatedBy INT,
    ChangedOn DATETIME NOT NULL,
@@ -429,4 +429,35 @@ INSERT INTO Language_ (Language_ID, Name) VALUES ("KR", "Korean");
 INSERT INTO Doctor (Doctor_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Specialization_ID, CreatedOn, ChangedOn) VALUES ("DOC12345678900", "Pierre", "Valentin", "123", "Main Street", "Toulouse", "France", "Additional Information", "SPC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO Doctor (Doctor_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Specialization_ID, CreatedOn, ChangedOn) VALUES ("DOC12345678901", "Jean", "Dupont", "11", "Rue de la Paix", "Paris", "France", "Additional Information", "SPC12345678901", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Patient (Patient_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Language_ID, CreatedOn, ChangedOn) VALUES ("PAT12345678900", "Maelie", "Cheng Peng", "123", "Main Street", "Bordeaux", "France", "Additional Information", "FR", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Patient (Patient_ID, First_Name, Last_Name, Nationality, Gender, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Main_Language_Code, Doctor_ID, CreatedOn, ChangedOn) VALUES ("PAT12345678900", "Peter", "Parker", " American", "M", "123", "Main Street", "New York", "USA", "Additional Information", "EN", "DOC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Patient (Patient_ID, First_Name, Last_Name, Nationality, Gender, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Main_Language_Code, Doctor_ID, CreatedOn, ChangedOn) VALUES ("PAT12345678901", "Bruce", "Wayne", " American", "M", "11", "Rue de la Paix", "Paris", "France", "Additional Information", "EN", "DOC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Patient (Patient_ID, First_Name, Last_Name, Nationality, Gender, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Main_Language_Code, Doctor_ID, CreatedOn, ChangedOn) VALUES ("PAT12345678902", "Tony", "Stark", " American", "M", "123", "Main Street", "New York", "USA", "Additional Information", "EN", "DOC12345678901", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Prescription (Date_of_issuance, Patient_ID, Doctor_ID, CreatedOn, ChangedOn) VALUES ("2020-01-01", "PAT12345678900", "DOC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Prescription (Date_of_issuance, Patient_ID, Doctor_ID, CreatedOn, ChangedOn) VALUES ("2020-01-01", "PAT12345678901", "DOC12345678901", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Medical_file (Name, Type, Path, Patient_ID, CreatedOn, ChangedOn) VALUES ("Medical File 1", "PDF", "C:\Medical Files\Medical File 1.pdf", "PAT12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Medical_file (Name, Type, Path, Patient_ID, CreatedOn, ChangedOn) VALUES ("Medical File 2", "EXEL", "C:\Medical Files\Medical File 2.xlsx", "PAT12345678901", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Doctor_Appointment (Start_Date_Time, End_Date_Time, Fee, Diagnosis, Secretary_ID, Patient_ID, Doctor_ID, CreatedOn, ChangedOn) VALUES ("2020-01-01 10:00:00", "2022-01-01 11:00:00", 100, "Diagnosis 1", "SEC12345678900", "PAT12345678900", "DOC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Doctor_Appointment (Start_Date_Time, End_Date_Time, Fee, Diagnosis, Secretary_ID, Patient_ID, Doctor_ID, CreatedOn, ChangedOn) VALUES ("2020-01-01 10:00:00", "2022-01-01 11:00:00", 100, "Diagnosis 2", "SEC12345678901", "PAT12345678901", "DOC12345678901", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Nurse_Appointment (Start_Date_Time, End_Date_Time, Fee, Diagnosis, Secretary_ID, Patient_ID, Nurse_ID, CreatedOn, ChangedOn) VALUES ("2020-01-01 10:00:00", "2022-01-01 11:00:00", 100, "Diagnosis 1", "SEC12345678900", "PAT12345678900", "NUR12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Has (Doctor_ID, Specialization_ID) VALUES ("DOC12345678900", "SPC12345678900");
+INSERT INTO Has (Doctor_ID, Specialization_ID) VALUES ("DOC12345678901", "SPC12345678901");
+
+INSERT INTO Contains (Medecine_ID, Prescription_ID, Quantity) VALUES ("MED12345678900", "PRE12345678900", 2);
+INSERT INTO Contains (Medecine_ID, Prescription_ID, Quantity) VALUES ("MED12345678901", "PRE12345678901", 1);
+
+INSERT INTO Handles (Doctor_ID, Secretary_ID) VALUES ("DOC12345678900", "SEC12345678900");
+INSERT INTO Handles (Doctor_ID, Secretary_ID) VALUES ("DOC12345678901", "SEC12345678901");
+
+INSERT INTO Heals (Patient_ID, Nurse_ID) VALUES ("PAT12345678900", "NUR12345678900");
+INSERT INTO Heals (Patient_ID, Nurse_ID) VALUES ("PAT12345678901", "NUR12345678901");
+
+INSERT INTO Speaks (Doctor_ID, Code_Language) VALUES ("DOC12345678900", "EN");
+INSERT INTO Speaks (Doctor_ID, Code_Language) VALUES ("DOC12345678901", "EN");
+INSERT INTO Speaks (Doctor_ID, Code_Language) VALUES ("DOC12345678900", "FR");
+INSERT INTO Speaks (Doctor_ID, Code_Language) VALUES ("DOC12345678901", "KR");
+
