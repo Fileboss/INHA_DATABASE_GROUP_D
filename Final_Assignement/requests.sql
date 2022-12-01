@@ -16,8 +16,8 @@ CREATE TABLE Nurse(
    ChangedOn DATETIME NOT NULL,
    ChangedBy INT,
    PRIMARY KEY(Nurse_ID)
-   CONSTRAINT CHECK_Qualification_Level CHECK (Qualification_level > 0 AND Qualification_level < 5)
 );
+-- Constraint qualitification level between 1 and 4
 
 CREATE TABLE Specialization(
    Specialization_Identification_Number CHAR(4),
@@ -98,8 +98,9 @@ CREATE TABLE Patient(
    PRIMARY KEY(Patient_ID),
    FOREIGN KEY(Main_Language_Code) REFERENCES Language_(Code),
    FOREIGN KEY(Doctor_ID) REFERENCES Doctor(Doctor_ID)
-   CONSTRAINT CHECK_Gender CHECK (Gender = 'M' OR Gender = 'F')
 );
+-- Gender constraint (M or F)
+
 
 CREATE TABLE Prescription(
    Prescription_ID INTEGER AUTOINCREMENT,
@@ -327,9 +328,9 @@ CREATE TRIGGER IF NOT EXISTS Trg_Update_Prescription
         SET NEW.ChangedBy = USER();
     END;
 
-CREATE TRIGGER IF NOT EXISTS Trg_Insert_Doctor_Appointment
+CREATE TRIGGER IF NOT EXISTS Trg_Insert_Appointment
     BEFORE INSERT 
-    ON Doctor_Appointment
+    ON Appointment
     FOR EACH ROW
     BEGIN
         SET NEW.CreatedOn = CURRENT_TIMESTAMP;
@@ -338,29 +339,9 @@ CREATE TRIGGER IF NOT EXISTS Trg_Insert_Doctor_Appointment
         SET NEW.ChangedBy = USER();
     END;
 
-CREATE TRIGGER IF NOT EXISTS Trg_Update_Doctor_Appointment
+CREATE TRIGGER IF NOT EXISTS Trg_Update_Appointment
     BEFORE UPDATE 
-    ON Doctor_Appointment
-    FOR EACH ROW
-    BEGIN
-        SET NEW.ChangedOn = CURRENT_TIMESTAMP;
-        SET NEW.ChangedBy = USER();
-    END;
-
-CREATE TRIGGER IF NOT EXISTS Trg_Insert_Nurse_Appointment
-    BEFORE INSERT 
-    ON Nurse_Appointment
-    FOR EACH ROW
-    BEGIN
-        SET NEW.CreatedOn = CURRENT_TIMESTAMP;
-        SET NEW.CreatedBy = USER();
-        SET NEW.ChangedOn = CURRENT_TIMESTAMP;
-        SET NEW.ChangedBy = USER();
-    END;
-
-CREATE TRIGGER IF NOT EXISTS Trg_Update_Nurse_Appointment
-    BEFORE UPDATE 
-    ON Nurse_Appointment
+    ON Appointment
     FOR EACH ROW
     BEGIN
         SET NEW.ChangedOn = CURRENT_TIMESTAMP;
@@ -435,3 +416,17 @@ INSERT INTO Specialization (Specialization_ID, Name, Description) VALUES ("SPC12
 INSERT INTO Specialization (Specialization_ID, Name, Description) VALUES ("SPC12345678902", "Dermatology", "Dermatology Description");
 
 INSERT INTO Medicine (Medicine_ID, Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678900", "Paracetamol", "Paracetamol Description", "Nausea", 10);
+INSERT INTO Medicine (Medicine_ID, Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678901", "Ibuprofen", "Ibuprofen Description", "Headache", 15);
+INSERT INTO Medicine (Medicine_ID, Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678902", "Aspirin", "Aspirin Description", "Nausea", 20);
+
+INSERT INTO Secretary (Secretary_ID, First_Name, Last_Name, Role, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, CreatedOn, ChangedOn) VALUES ("SEC12345678900", "Martine", "Martin", "Administrative", "123", "Main Street", "Bordeaux", "France", "Additional Information", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Secretary (Secretary_ID, First_Name, Last_Name, Role, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, CreatedOn, ChangedOn) VALUES ("SEC12345678901", "Marie", "Dupont", "Responsible of Appointements", "11", "Rue de la Paix", "Paris", "France", "Additional Information", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Language_ (Language_ID, Name) VALUES ("EN", "English");
+INSERT INTO Language_ (Language_ID, Name) VALUES ("FR", "French");
+INSERT INTO Language_ (Language_ID, Name) VALUES ("KR", "Korean");
+
+INSERT INTO Doctor (Doctor_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Specialization_ID, CreatedOn, ChangedOn) VALUES ("DOC12345678900", "Pierre", "Valentin", "123", "Main Street", "Toulouse", "France", "Additional Information", "SPC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Doctor (Doctor_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Specialization_ID, CreatedOn, ChangedOn) VALUES ("DOC12345678901", "Jean", "Dupont", "11", "Rue de la Paix", "Paris", "France", "Additional Information", "SPC12345678901", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Patient (Patient_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Language_ID, CreatedOn, ChangedOn) VALUES ("PAT12345678900", "Maelie", "Cheng Peng", "123", "Main Street", "Bordeaux", "France", "Additional Information", "FR", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
