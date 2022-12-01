@@ -352,70 +352,67 @@ CREATE TRIGGER IF NOT EXISTS Trg_Doctor_Doctor_Appointment_Overlap -- Prevents a
     BEFORE INSERT 
     ON Doctor_Appointment
     FOR EACH ROW
+    WHEN (( SELECT COUNT (*) 
+        FROM Doctor_Appointment
+        WHERE Doctor_ID = NEW.Doctor_ID 
+        AND NEW.Start_Date_Time <= Doctor_Appointment.End_Date_Time 
+        AND NEW.End_Date_Time > Doctor_Appointment.Start_Date_Time)) > 0 
     BEGIN
-        WHEN EXISTS 
-            (SELECT * 
-            FROM Doctor_Appointment
-            WHERE Doctor_ID = NEW.Doctor_ID 
-            AND((NEW.Start_Date_Time <= Doctor_Appointment.End_Date_Time 
-            AND NEW.End_Date_Time > Doctor_Appointment.Start_Date_Time)))
-        BEGIN
-            SELECT RAISE(ABORT, 'Doctor already has an appointment at this time');
-        END;
+        SELECT RAISE(ABORT, 'Doctor already has an appointment at this time');
     END;
 
 CREATE TRIGGER IF NOT EXISTS Trg_Patient_Doctor_Appointment_Overlap -- Prevents a patient from having two doctor appointments at the same time
     BEFORE INSERT 
     ON Doctor_Appointment
     FOR EACH ROW
+    WHEN  
+        (SELECT COUNT (*) 
+        FROM Doctor_Appointment
+        WHERE Patient_ID = NEW.Patient_ID 
+        AND((NEW.Start_Date_Time <= Doctor_Appointment.End_Date_Time 
+        AND NEW.End_Date_Time > Doctor_Appointment.Start_Date_Time))) > 0
     BEGIN
-        WHEN EXISTS 
-            (SELECT * 
-            FROM Doctor_Appointment
-            WHERE Patient_ID = NEW.Patient_ID 
-            AND((NEW.Start_Date_Time <= Doctor_Appointment.End_Date_Time 
-            AND NEW.End_Date_Time > Doctor_Appointment.Start_Date_Time)))
-        BEGIN
-            SELECT RAISE(ABORT, 'Patient already has an appointment at this time');
-        END;
+        SELECT RAISE(ABORT, 'Patient already has an appointment at this time');
     END;
 
 CREATE TRIGGER IF NOT EXISTS Trg_Nurse_Nurse_Appointment_Overlap -- Prevents a nurse from having two appointments at the same time
     BEFORE INSERT 
     ON Nurse_Appointment
     FOR EACH ROW
+    WHEN 
+        (SELECT COUNT(*) 
+        FROM Nurse_Appointment
+        WHERE Nurse_ID = NEW.Nurse_ID 
+        AND((NEW.Start_Date_Time <= Nurse_Appointment.End_Date_Time 
+        AND NEW.End_Date_Time > Nurse_Appointment.Start_Date_Time))) > 0
     BEGIN
-        WHEN EXISTS 
-            (SELECT * 
-            FROM Nurse_Appointment
-            WHERE Nurse_ID = NEW.Nurse_ID 
-            AND((NEW.Start_Date_Time <= Nurse_Appointment.End_Date_Time 
-            AND NEW.End_Date_Time > Nurse_Appointment.Start_Date_Time)))
-        BEGIN
-            SELECT RAISE(ABORT, 'Nurse already has an appointment at this time');
-        END;
+        SELECT RAISE(ABORT, 'Nurse already has an appointment at this time');
     END;
 
 CREATE TRIGGER IF NOT EXISTS Trg_Patient_Nurse_Appointment_Overlap -- Prevents a patient from having two nurse appointments at the same time
     BEFORE INSERT 
     ON Nurse_Appointment
     FOR EACH ROW
+    WHEN EXISTS 
+        (SELECT COUNT(*) 
+        FROM Nurse_Appointment
+        WHERE Patient_ID = NEW.Patient_ID 
+        AND((NEW.Start_Date_Time <= Nurse_Appointment.End_Date_Time 
+        AND NEW.End_Date_Time > Nurse_Appointment.Start_Date_Time))) > 0
     BEGIN
-        WHEN EXISTS 
-            (SELECT * 
-            FROM Nurse_Appointment
-            WHERE Patient_ID = NEW.Patient_ID 
-            AND((NEW.Start_Date_Time <= Nurse_Appointment.End_Date_Time 
-            AND NEW.End_Date_Time > Nurse_Appointment.Start_Date_Time)))
-        BEGIN
-            SELECT RAISE(ABORT, 'Patient already has an appointment at this time');
-        END;
+        SELECT RAISE(ABORT, 'Patient already has an appointment at this time');
     END;
 
 
 
 
 -- Inserting DATA
-INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level) VALUES ("NRS12345678900", "Maelie", "Cheng Peng", "123", "Main Street", "Bordeaux", "France", "Additional Information", 2);
-INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level) VALUES ("NRS12345678901", "Elyne", "Qiu", "11", "Rue de la Paix", "Paris", "France", "Additional Information", 2);
-INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level) VALUES ("NRS12345678902", "Léa", "Liu", "123", "Main Street", "Bordeaux", "France", "Additional Information", 2);
+INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level, CreatedOn, ChangedOn) VALUES ("NRS12345678900", "Maelie", "Cheng Peng", "123", "Main Street", "Bordeaux", "France", "Additional Information", 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level) VALUES ("NRS12345678901", "Elyne", "Qiu", "11", "Rue de la Paix", "Paris", "France", "Additional Information", 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level) VALUES ("NRS12345678902", "Léa", "Liu", "123", "Main Street", "Bordeaux", "France", "Additional Information", 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO Specialization (Specialization_ID, Name, Description) VALUES ("SPC12345678900", "General Medicine", "General Medicine Description");
+INSERT INTO Specialization (Specialization_ID, Name, Description) VALUES ("SPC12345678901", "Cardiology", "Cardiology Description");
+INSERT INTO Specialization (Specialization_ID, Name, Description) VALUES ("SPC12345678902", "Dermatology", "Dermatology Description");
+
+INSERT INTO Medicine (Medicine_ID, Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678900", "Paracetamol", "Paracetamol Description", "Nausea", 10);
