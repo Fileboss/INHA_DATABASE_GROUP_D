@@ -28,12 +28,12 @@ CREATE TABLE Specialization(
 
 
 CREATE TABLE Medicine(
-   Medecine_ID INTEGER AUTOINCREMENT,
+   Medicine_ID INTEGER AUTOINCREMENT,
    Name VARCHAR(50) NOT NULL,
    Description TEXT NOT NULL,
    Side_Effects TEXT NOT NULL,
    Unit_Price DOUBLE,
-   PRIMARY KEY(Medecine_ID)
+   PRIMARY KEY(Medicine_ID)
 );
 
 CREATE TABLE Secretary(
@@ -175,11 +175,11 @@ CREATE TABLE Has(
 );
 
 CREATE TABLE Contains(
-   Medecine_ID INT,
+   Medicine_ID INT,
    Prescription_ID INT,
    Quantity INT,
-   PRIMARY KEY(Medecine_ID, Prescription_ID),
-   FOREIGN KEY(Medecine_ID) REFERENCES Medicine(Medecine_ID),
+   PRIMARY KEY(Medicine_ID, Prescription_ID),
+   FOREIGN KEY(Medicine_ID) REFERENCES Medicine(Medicine_ID),
    FOREIGN KEY(Prescription_ID) REFERENCES Prescription(Prescription_ID)
 );
 
@@ -408,16 +408,16 @@ CREATE TRIGGER IF NOT EXISTS Trg_Patient_Nurse_Appointment_Overlap -- Prevents a
 
 -- Inserting DATA
 INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level, CreatedOn, ChangedOn) VALUES ("NRS12345678900", "Maelie", "Cheng Peng", "123", "Main Street", "Bordeaux", "France", "Additional Information", 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level) VALUES ("NRS12345678901", "Elyne", "Qiu", "11", "Rue de la Paix", "Paris", "France", "Additional Information", 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level) VALUES ("NRS12345678902", "Léa", "Liu", "123", "Main Street", "Bordeaux", "France", "Additional Information", 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level, CreatedOn, ChangedOn) VALUES ("NRS12345678901", "Elyne", "Qiu", "11", "Rue de la Paix", "Paris", "France", "Additional Information", 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Nurse (Nurse_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Qualification_level, CreatedOn, ChangedOn) VALUES ("NRS12345678902", "Léa", "Liu", "123", "Main Street", "Bordeaux", "France", "Additional Information", 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Specialization (Specialization_ID, Name, Description) VALUES ("SPC12345678900", "General Medicine", "General Medicine Description");
-INSERT INTO Specialization (Specialization_ID, Name, Description) VALUES ("SPC12345678901", "Cardiology", "Cardiology Description");
-INSERT INTO Specialization (Specialization_ID, Name, Description) VALUES ("SPC12345678902", "Dermatology", "Dermatology Description");
+INSERT INTO Specialization (Specialization_Identification_Number, Name, Description) VALUES ("SPC12345678900", "General Medicine", "General Medicine Description");
+INSERT INTO Specialization (Specialization_Identification_Number, Name, Description) VALUES ("SPC12345678901", "Cardiology", "Cardiology Description");
+INSERT INTO Specialization (Specialization_Identification_Number, Name, Description) VALUES ("SPC12345678902", "Dermatology", "Dermatology Description");
 
-INSERT INTO Medicine (Medicine_ID, Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678900", "Paracetamol", "Paracetamol Description", "Nausea", 10);
-INSERT INTO Medicine (Medicine_ID, Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678901", "Ibuprofen", "Ibuprofen Description", "Headache", 15);
-INSERT INTO Medicine (Medicine_ID, Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678902", "Aspirin", "Aspirin Description", "Nausea", 20);
+INSERT INTO Medicine (Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678900", "Paracetamol", "Paracetamol Description", "Nausea", 10);
+INSERT INTO Medicine (Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678901", "Ibuprofen", "Ibuprofen Description", "Headache", 15);
+INSERT INTO Medicine (Name, Description, Side_Effects, Unit_Price) VALUES ("MED12345678902", "Aspirin", "Aspirin Description", "Nausea", 20);
 
 INSERT INTO Secretary (Secretary_ID, First_Name, Last_Name, Role, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, CreatedOn, ChangedOn) VALUES ("SEC12345678900", "Martine", "Martin", "Administrative", "123", "Main Street", "Bordeaux", "France", "Additional Information", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO Secretary (Secretary_ID, First_Name, Last_Name, Role, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, CreatedOn, ChangedOn) VALUES ("SEC12345678901", "Marie", "Dupont", "Responsible of Appointements", "11", "Rue de la Paix", "Paris", "France", "Additional Information", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -426,8 +426,8 @@ INSERT INTO Language_ (Language_ID, Name) VALUES ("EN", "English");
 INSERT INTO Language_ (Language_ID, Name) VALUES ("FR", "French");
 INSERT INTO Language_ (Language_ID, Name) VALUES ("KR", "Korean");
 
-INSERT INTO Doctor (Doctor_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Specialization_ID, CreatedOn, ChangedOn) VALUES ("DOC12345678900", "Pierre", "Valentin", "123", "Main Street", "Toulouse", "France", "Additional Information", "SPC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-INSERT INTO Doctor (Doctor_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Specialization_ID, CreatedOn, ChangedOn) VALUES ("DOC12345678901", "Jean", "Dupont", "11", "Rue de la Paix", "Paris", "France", "Additional Information", "SPC12345678901", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Doctor (Doctor_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Specialization_Identification_Number, CreatedOn, ChangedOn) VALUES ("DOC12345678900", "Pierre", "Valentin", "123", "Main Street", "Toulouse", "France", "Additional Information", "SPC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Doctor (Doctor_ID, First_Name, Last_Name, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Specialization_Identification_Number, CreatedOn, ChangedOn) VALUES ("DOC12345678901", "Jean", "Dupont", "11", "Rue de la Paix", "Paris", "France", "Additional Information", "SPC12345678901", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO Patient (Patient_ID, First_Name, Last_Name, Nationality, Gender, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Main_Language_Code, Doctor_ID, CreatedOn, ChangedOn) VALUES ("PAT12345678900", "Peter", "Parker", " American", "M", "123", "Main Street", "New York", "USA", "Additional Information", "EN", "DOC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 INSERT INTO Patient (Patient_ID, First_Name, Last_Name, Nationality, Gender, Address_Street_Number, Address_Street_Name, Address_City, Address_Country, Address_Additional_Information, Main_Language_Code, Doctor_ID, CreatedOn, ChangedOn) VALUES ("PAT12345678901", "Bruce", "Wayne", " American", "M", "11", "Rue de la Paix", "Paris", "France", "Additional Information", "EN", "DOC12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -444,11 +444,11 @@ INSERT INTO Doctor_Appointment (Start_Date_Time, End_Date_Time, Fee, Diagnosis, 
 
 INSERT INTO Nurse_Appointment (Start_Date_Time, End_Date_Time, Fee, Diagnosis, Secretary_ID, Patient_ID, Nurse_ID, CreatedOn, ChangedOn) VALUES ("2020-01-01 10:00:00", "2022-01-01 11:00:00", 100, "Diagnosis 1", "SEC12345678900", "PAT12345678900", "NUR12345678900", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-INSERT INTO Has (Doctor_ID, Specialization_ID) VALUES ("DOC12345678900", "SPC12345678900");
-INSERT INTO Has (Doctor_ID, Specialization_ID) VALUES ("DOC12345678901", "SPC12345678901");
+INSERT INTO Has (Doctor_ID, Specialization_Identification_Number) VALUES ("DOC12345678900", "SPC12345678900");
+INSERT INTO Has (Doctor_ID, Specialization_Identification_Number) VALUES ("DOC12345678901", "SPC12345678901");
 
-INSERT INTO Contains (Medecine_ID, Prescription_ID, Quantity) VALUES ("MED12345678900", "PRE12345678900", 2);
-INSERT INTO Contains (Medecine_ID, Prescription_ID, Quantity) VALUES ("MED12345678901", "PRE12345678901", 1);
+INSERT INTO Contains (Medicine_ID, Prescription_ID, Quantity) VALUES ("MED12345678900", "PRE12345678900", 2);
+INSERT INTO Contains (Medicine_ID, Prescription_ID, Quantity) VALUES ("MED12345678901", "PRE12345678901", 1);
 
 INSERT INTO Handles (Doctor_ID, Secretary_ID) VALUES ("DOC12345678900", "SEC12345678900");
 INSERT INTO Handles (Doctor_ID, Secretary_ID) VALUES ("DOC12345678901", "SEC12345678901");
