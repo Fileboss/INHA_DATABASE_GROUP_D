@@ -461,3 +461,26 @@ INSERT INTO Speaks (Doctor_ID, Code_Language) VALUES ("DOC12345678901", "EN");
 INSERT INTO Speaks (Doctor_ID, Code_Language) VALUES ("DOC12345678900", "FR");
 INSERT INTO Speaks (Doctor_ID, Code_Language) VALUES ("DOC12345678901", "KR");
 
+-- Request to update the specialization of a doctor.
+UPDATE Doctor
+SET Specialization_ID, ChangedOn = "SPC12345678901", CURRENT_TIMESTAMP
+WHERE Doctor_ID = "DOC12345678900";
+
+-- Request to get all the appointments of a doctor.
+SELECT DA.Start_Date_Time, DA.End_Date_Time, D.First_Name, D.Last_Name, P.First_Name, P.Last_Name
+FROM Doctor_Appointment DA, Doctor D, Patient P
+WHERE D.Doctor_ID = "DOC12345678900"
+AND DA.Doctor_ID = D.Doctor_ID
+AND DA.Patient_ID = P.Patient_ID;
+
+-- Delete a doctor from the database.
+DELETE FROM Doctor
+WHERE Doctor_ID = "DOC12345678900";
+
+-- Find all patients who have been prescribed paracetamol.
+SELECT P.Patient_ID, P.First_Name, P.Last_Name
+FROM Patient P, Prescription PRE, Contains C, Medecine M
+WHERE M.Medecine_Name = "Paracetamol"
+AND C.Medecine_ID = M.Medecine_ID
+AND C.Prescription_ID = PRE.Prescription_ID
+AND PRE.Patient_ID = P.Patient_ID;
