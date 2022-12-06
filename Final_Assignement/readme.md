@@ -1,5 +1,9 @@
 # GROUP D : FINAL ASIGNEMENT
 BAUS 12224893
+RODRIGUEZ 12224836
+Mathieu
+Balthazar
+Nazerke
 
 This repository contains the group D work for the final assignement of the course "Database" at INHA University.
 
