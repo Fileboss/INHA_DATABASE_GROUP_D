@@ -3,7 +3,7 @@ BAUS 12224893
 RODRIGUEZ 12224836
 Mathieu
 Balthazar
-Nazerke
+Nazerke 12224970
 
 This repository contains the group D work for the final assignement of the course "Database" at INHA University.
 
